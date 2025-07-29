@@ -13,16 +13,16 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    #checkout Code
+        #checkout Code
       - name: Checkout code
         uses: actions/checkout@v4
 
-    #Set up Nodejs
+        #Set up Nodejs
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
           node-version: '14'
           
-    #install NodeJS dependencies
+        #Install NodeJS dependencies
       - name: Install NodeJS dependencies
         run: npm install
