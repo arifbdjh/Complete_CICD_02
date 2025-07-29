@@ -82,7 +82,7 @@ jobs:
     #Push image to dockerhub
       - name: Push image to Dockerhub
         run:
-          docker push ${{ secrets.DOCKERHUB_USERNAME}}/actions-cicd:latest
+          docker push ${{ secrets.DOCKER_USERNAME}}/actions-cicd:latest
           
       
 
