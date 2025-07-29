@@ -33,5 +33,13 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          
+        #Docker Image Build
+      - name: Docker image build
+        run: docker build -t $GITHUB_SHA .
+
+        #Trivy Scan
+      - name: Trivy Scan
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image  $GITHUB_SHA
 
         
