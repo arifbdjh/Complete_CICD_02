@@ -50,6 +50,16 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ${{secrets.AWS_REGION}}
           
+     #Install aws cli
+      - name: Install AWS CLI v2
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          version: 2 # Specify the desired AWS CLI version (e.g., 2 for v2)
+          verbose: false
+          arch: amd64
+      - name: Use AWS CLI
+        run: |
+          aws --version
         
         #Login AWS ECR
       - name: Login to AWS ECR
