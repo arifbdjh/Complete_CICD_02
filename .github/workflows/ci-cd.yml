@@ -38,7 +38,7 @@ jobs:
       - name: Docker image build
         run: |
           docker build -t actions-app:${{ github.sha}} .
-          docker tag action-app:${{ github.sha}} ${{ secrets.ECR_REPOSITORY_URI}}:latest
+          docker tag actions-app:${{ github.sha}} ${{ secrets.ECR_REPOSITORY_URI}}:latest
         
 
         #Trivy Scan
