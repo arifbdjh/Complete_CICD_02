@@ -39,6 +39,7 @@ jobs:
         run: |
           docker build -t actions-app:${{ github.sha}} .
           docker tag actions-app:${{ github.sha}} ${{ secrets.ECR_REPOSITORY_URI}}/actions-cicd:latest
+          docker tag actions-app:${{ github.sha}} ${{ secrets.DOCKERHUB_USERNAME}}/actions-cicd:latest
         
 
         #Trivy Scan
@@ -77,6 +78,11 @@ jobs:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ${{secrets.AWS_REGION}}
+
+    #Push image to dockerhub
+      - name: Push image to Dockerhub
+        run:
+          docker push ${{ secrets.DOCKERHUB_USERNAME}}/actions-cicd:latest
           
       
 
